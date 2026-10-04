@@ -1,0 +1,7 @@
+streamlit
+fastapi
+uvicorn
+supabase
+huggingface_hub
+pydantic
+requests
