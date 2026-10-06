@@ -2,7 +2,6 @@ import json
 
 import streamlit as st
 
-from core.llm import generate_response
 from core.project_service import (
     get_user_projects,
     update_project_section,
@@ -508,13 +507,13 @@ with tab2:
                         "### 🚀 Deployment Plan"
                     )
 
-                    for item in plan[
-                        "deployment_plan"
-                    ]:
+                    deployment_plan = plan.get("deployment_plan", [])
 
-                        st.write(
-                            f"- {item}"
-                        )
+                    if isinstance(deployment_plan, list):
+                        for item in deployment_plan:
+                            st.markdown(f"- {item}")
+                    else:
+                        st.write(deployment_plan)
 
 # =========================================================
 # BUILD
